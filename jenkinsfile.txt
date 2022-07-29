@@ -1,0 +1,11 @@
+pipeline {
+    agent {label 'prod-master'}
+    stages {
+        stage('checkout') {
+            steps {
+                echo 'checkout the source code from github to jenkins'
+				git changelog: false, credentialsId: 'github-authentication', poll: false, url: 'git@github.com:bhargavichinthakunta/spring-boot-hw.git'
+            }
+        }
+    }
+}
